@@ -47,7 +47,7 @@ module.exports.run = async (bot, message, args) => {
         } else
         {
 
-            cooldowns[message.author.id].daily = Daily.now();
+            cooldowns[message.author.id].daily = daily.now();
             fs.writeFile("./cooldowns.json", JSON.stringify(cooldowns), (err) => {
 
                 if(err) console.log(err);
@@ -114,7 +114,7 @@ module.exports.run = async (bot, message, args) => {
         
                 });
 
-                cooldowns[message.author.id].daily = Daily.now();
+                cooldowns[message.author.id].daily = Date.now();
                 fs.writeFile("./cooldowns.json", JSON.stringify(cooldowns), (err) => {
 
                     if(err) console.log(err);
