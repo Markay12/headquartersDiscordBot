@@ -10,11 +10,15 @@ module.exports.run = async (bot, message, args) => {
                          
                          Basic Commands\n---------------------
                          .ping ---> You can use this to make sure I'm awake and check latency between us\n
-                         .help ---> Well... you got here somehow???\n\n
+                         .help ---> Well... you got here somehow???\n
+                         .celebrate <name> ---> let's celebrate! Woohoo (Shows a gif celebration)\n
+                         .destruction <name> --> destruction gif\n\n
                          Economy\n---------------------
-                         YOU HAVE TO USE COMMAND .bal before you can claim your daily rewards
+                         **YOU HAVE TO USE COMMAND \`.bal\` before you can claim your daily rewards**
                          .bal ---> Check your server balance for daily rewards and betting!\n
-                         .daily ---> Collect your daily rewards balance here!\n\n\nFeel free to send CEO Markay#5500 or COO FeatheredSnake#6504 any questions or things you would like implemented in the future!`);
+                         .daily ---> Collect your daily rewards balance here!\n
+                         .donate <@user> ---> Donate money to a certain user\n
+                         .gamble <amount> ---> win or lose it all! See where you can take your money!\n\nFeel free to send CEO Markay#5500 or COO FeatheredSnake#6504 any questions or things you would like implemented in the future!`);
 
 
 

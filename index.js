@@ -85,4 +85,4 @@ bot.on("message", async message =>{
 
 })
 
-bot.login(process.env.token) //use token defined in our config file
+bot.login(botconfig.token) //use token defined in our config file
