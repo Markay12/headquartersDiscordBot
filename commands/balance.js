@@ -53,7 +53,7 @@ module.exports.run = async (bot, message, args) => {
         } else { //if user already has a data amount
 
 
-            return(`${bot.users.cache.get(user.id).username} has ${data.money} ♏︎`);
+            return message.channel.send(`${bot.users.cache.get(user.id).username} has ${data.money} ♏︎`);
 
         }
 
