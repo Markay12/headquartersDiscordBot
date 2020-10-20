@@ -15,53 +15,77 @@ const Data = require("../models/data.js")
 
 module.exports.run = async (bot, message, args) => {
 
-    if(!money[message.author.id] || money[message.author.id].money <= 0) return message.reply("You don't have any money.");
+    Data.findOne({
 
-    if(!args[0]) return message.reply("Please specify a bet.");
+        userID: message.author.id
 
-    if(args[0].toLowerCase() == "all") args[0] = money[message.author.id].money; //bet everything
+    }, (err, data) => {
 
-    try{
+        if(err) console.log(err);
+        if(!data)
+        {
 
-        var bet = parseFloat(args[0]);
+            const newData = new Data({
 
-    } catch {
+                name: message.author.username,
+                userID: message.author.id,
+                leaderboard: "all",
+                money: 0,
+                daily: 0,
 
-        return message.reply("C'mon man, make it easy... only whole numbers please");
 
-    }
+            })
+            newData.save().catch(err => console.log(err));
+            return message.reply("Sorry, you don't have any money to gamble with. Maybe try the `.daily` command?")
 
-    if (bet != Math.floor(bet)) return message.reply("C'mon man, make it easy... only whole numbers please");
+        } else
+        {
 
-    if(money[message.author.id].money < bet) return message.reply("Woah bro. Poorer than you think, try `.bal` sometime soon");
+            if(data.money <= 0) return message.reply("You don't have any money.");
 
-    if(bet > maxBet) return message.reply(`The maximum bet you can place here is ${maxBet.toLocaleString()} ♏︎`);
+            if(!args[0]) return message.reply("Please specify a bet.");
 
-    let chances = ['win', 'lose'];
-    var pick = chances[Math.floor(Math.random() * chances.length)];
+            if(args[0].toLowerCase() == "all") args[0] = data.money; //bet everything
 
-    if(pick == "lose"){
+            try{
+            
+                var bet = parseFloat(args[0]);
+            
+            } catch {
+            
+                return message.reply("C'mon man, make it easy... only whole numbers please");
+            
+            }
+        
+            if (bet != Math.floor(bet)) return message.reply("C'mon man, make it easy... only whole numbers please");
+        
+            if(data.money < bet) return message.reply("Woah bro. Poorer than you think, try `.bal` sometime soon");
+        
+            if(bet > maxBet) return message.reply(`The maximum bet you can place here is ${maxBet.toLocaleString()} ♏︎`);
+        
+            let chances = ['win', 'lose'];
+            var pick = chances[Math.floor(Math.random() * chances.length)];
+        
+            if(pick == "lose"){
+            
+                data.money -= bet;
+                data.save().catch(err => console.log(err));
+                return message.reply(`You LOSE! New Balance: ${data.money}`);
+            
+            }
+            else{
+            
+                data.money += bet;
+                data.save().catch(err => console.log(err));
+                return message.reply(`You WIN! New Balance: ${data.money}\nCongratulations!\n`);
+                
+            
+            }
+        }
+            
+    })
 
-        money[message.author.id].money -= bet;
-        fs.writeFile("./money.json", JSON.stringify(money), (err) => {
-
-            if(err) console.log(err)
-
-        })
-        return message.reply(`You LOSE! New Balance: ${money[message.author.id].money}`);
-
-    }
-    else{
-
-        money[message.author.id].money += bet;
-        fs.writeFile("./money.json", JSON.stringify(money), (err) => {
-
-            if(err) console.log(err);
-
-        });
-        return message.reply(`You WIN! New Balance: ${money[message.author.id].money} \nCongratulations!\n`);
-
-    }
+    
 
 }
 
