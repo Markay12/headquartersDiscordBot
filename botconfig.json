@@ -2,7 +2,7 @@
 
     "token": "",
     "prefix": ".",
-    "passmongodb": "mongodb://mashinhu:mashinhust12@headquarters-shard-00-00.eoiqk.mongodb.net:27017,headquarters-shard-00-01.eoiqk.mongodb.net:27017,headquarters-shard-00-02.eoiqk.mongodb.net:27017/<dbname>?ssl=true&replicaSet=atlas-eqy270-shard-0&authSource=admin&retryWrites=true&w=majority"
+    "passmongodb": "mongodb://mashinhu:mashinhust12@headquarters-shard-00-00.eoiqk.mongodb.net:27017,headquarters-shard-00-01.eoiqk.mongodb.net:27017,headquarters-shard-00-02.eoiqk.mongodb.net:27017/headquarters?ssl=true&replicaSet=atlas-eqy270-shard-0&authSource=admin&retryWrites=true&w=majority"
 
 
 }
