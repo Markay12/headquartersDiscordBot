@@ -4,6 +4,7 @@ const money = require("../money.json");
 const ms = require("parse-ms");
 const cooldowns = require("../cooldowns.json");
 const mongoose = require("mongoose");
+const botconfig = require("../botconfig.json");
 
 //CONNECT TO MONGOOSEDB
 mongoose.connect(botconfig.passmongodb, {
@@ -22,9 +23,6 @@ module.exports.run = async (bot, message, args) => {
     let timeout = 86400000; //seconds in one full day
     let reward = 100;
 
-    let embed = new Discord.MessageEmbed();
-    embed.setTitle("Daily Rewards!");
-
     Data.findOne({
 
         userID: message.author.id
@@ -40,143 +38,41 @@ module.exports.run = async (bot, message, args) => {
                 userID: message.author.id,
                 leaderboard: "all",
                 money: 0,
-                daily: 0,
+                daily: Date.now(),
 
 
             })
             newData.save().catch(err => console.log(err));
-            return message.channel.send(`${message.author.username} has 0 ♏︎`);
+            return message.channel.send(`${message.author.username} has ${reward} ♏︎`);
 
         } else { //if user already has a data amount
 
+            if(timeout - (Date.now() - data.daily) > 0)
+            {
 
-            return message.channel.send(`${message.author.username} has ${data.money} ♏︎`);
+                //set time
+                let time = ms(timeout - (Date.now() - data.daily));
+
+                return message.reply(`**You Already Collected your Daily Rewards!**\nCollect Again in ${time.hours}h ${time.minutes}m ${time.seconds}s`);
+
+            }
+            else
+            {
+
+                data.money += reward; //add reward to user
+                
+                //set cooldown
+                data.daily = Date.now();
+
+                data.save().catch(err => console.log(err)); //save data
+
+                return message.reply(`You have recieved ${reward} ♏︎ for a total of ${data.money}`)
+
+            }
 
         }
 
     })
-
-    if(!money[message.author.id])
-    {
-
-        money[message.author.id] = 
-        {
-
-            name: bot.users.cache.get(message.author.id), tag,
-            money: reward
-
-        }
-        fs.writeFile("./money.json", JSON.stringify(money), (err) => {
-
-            if(err) console.log(err)
-
-        });
-
-        if (!cooldowns[message.author.id])
-        {
-
-            cooldowns[message.author.id] = {
-
-                name: bot.users.cache.get(message.author.id).tag,
-                daily: Date.now()
-
-            }
-            fs.writeFile("./cooldowns.json", JSON.stringify(cooldowns), (err) => {
-
-                if(err) console.log(err);
-
-            });
-
-
-        } else
-        {
-
-            cooldowns[message.author.id].daily = daily.now();
-            fs.writeFile("./cooldowns.json", JSON.stringify(cooldowns), (err) => {
-
-                if(err) console.log(err);
-
-            });
-
-        }
-
-        embed.setDescription(`You have collected your daily reward of ♏︎${reward} Marks. Current balance is ♏︎${money[message.author.id].money}.`);
-        embed.setColor("00ff00");
-        return message.channel.send(embed);
-
-    } else 
-    {
-
-        if (!cooldowns[message.author.id])
-        {
-
-            cooldowns[message.author.id] = {
-
-                name: bot.users.cache.get(message.author.id).tag,
-                daily: Date.now()
-
-            }
-            fs.writeFile("./cooldowns.json", JSON.stringify(cooldowns), (err) => {
-
-                if(err) console.log(err);
-
-            });
-
-            money[message.author.id].money += reward;
-
-            fs.writeFile("./money.json", JSON.stringify(money), (err) => {
-
-                if(err) console.log(err)
-    
-            });
-
-            embed.setDescription(`You have collected your daily reward of ♏︎${reward} Marks. Current balance is ♏︎${money[message.author.id].money}.`);
-            embed.setColor("00ff00");
-            return message.channel.send(embed);
-
-
-
-        } else
-        {
-
-            if(timeout - (Date.now() - cooldowns[message.author.id].daily) > 0) {
-
-                let time = ms(timeout - (Date.now() - cooldowns[message.author.id].daily))
-
-                embed.setColor("ff0000");
-                embed.setDescription("**You Already Collected your Daily Rewards!**");
-                embed.addField(`Collect again in`, `${time.hours}h ${time.minutes}m ${time.seconds}s`);
-                return message.channel.send(embed);
-
-            } else
-            {
-
-                money[message.author.id].money += reward;
-                fs.writeFile("./money.json", JSON.stringify(money), (err) => {
-
-                    if(err) console.log(err)
-        
-                });
-
-                cooldowns[message.author.id].daily = Date.now();
-                fs.writeFile("./cooldowns.json", JSON.stringify(cooldowns), (err) => {
-
-                    if(err) console.log(err);
-
-                });
-
-                embed.setDescription(`You have collected your daily reward of ♏︎${reward} Marks. Current balance is ♏︎${money[message.author.id].money}.`);
-                embed.setColor("00ff00");
-                return message.channel.send(embed);
-
-
-            }
-
-        }
-
-
-    }
-
 
 }
 
