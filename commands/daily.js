@@ -1,8 +1,4 @@
-const Discord = require("discord.js");
-const fs = require("fs");
-const money = require("../money.json");
 const ms = require("parse-ms");
-const cooldowns = require("../cooldowns.json");
 const mongoose = require("mongoose");
 const botconfig = require("../botconfig.json");
 
