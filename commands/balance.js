@@ -7,7 +7,8 @@ const botconfig = require("../botconfig.json");
 //CONNECT TO MONGOOSEDB
 mongoose.connect(botconfig.passmongodb, {
 
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 
 });
 
@@ -26,25 +27,37 @@ module.exports.run = async (bot, message, args) => {
         var user = message.mentions.users.first() || bot.users.cache.get(args[0]);
 
     }
-    if (!money[user.id]) {
 
-        money[user.id] = {
+    Data.findOne({
 
-            name: bot.users.cache.get(user.id).tag,
-            money: 0
+        userID: user.id //find the users account
+
+    }, (err, data) => {
+
+        if(err) console.log(err);
+        if(!data) {
+
+            const newData = new Data({
+
+                name: bot.users.cache.get(user.id).username,
+                userID: user.id,
+                leaderboard: "all",
+                money: 0,
+                daily: 0,
+
+
+            })
+            newData.save().catch(err => console.log(err));
+            return message.channel.send(`${bot.users.cache.get(user.id).username} has 0 ♏︎`)
+
+        } else { //if user already has a data amount
+
+
+            return(`${bot.users.cache.get(user.id).username} has ${data.money} ♏︎`)
 
         }
-        fs.writeFile("./money.json", JSON.stringify(money), (err) => {
 
-            if (err) console.log(err)
-
-        });
-
-
-    }
-
-    return message.channel.send(`${bot.users.cache.get(user.id).username} has ${money[user.id].money} ♏︎`);
-    
+    })
 
 }
 
