@@ -1,6 +1,17 @@
-const money = require("../money.json");
-const fs = require("fs");
 const maxBet = 100000;
+const mongoose = require("mongoose");
+const botconfig = require("../botconfig.json");
+
+//CONNECT TO MONGOOSEDB
+mongoose.connect(botconfig.passmongodb, {
+
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+
+});
+
+//MODELS
+const Data = require("../models/data.js")
 
 module.exports.run = async (bot, message, args) => {
 
