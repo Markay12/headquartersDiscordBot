@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
                          .bal ---> Check your server balance for daily rewards and betting!\n
                          .daily ---> Collect your daily rewards balance here!\n
                          .donate <@user> ---> Donate money to a certain user\n
-                         .gamble <amount> ---> win or lose it all! See where you can take your money!\n\nFeel free to send CEO Markay#5500 or COO FeatheredSnake#6504 any questions or things you would like implemented in the future!`);
+                         .gamble <amount> or *.gamble all* ---> win or lose it all! See where you can take your money!\n\nFeel free to send CEO Markay#5500 or COO FeatheredSnake#6504 any questions or things you would like implemented in the future!`);
 
 
 
