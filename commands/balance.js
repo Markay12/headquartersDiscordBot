@@ -48,12 +48,12 @@ module.exports.run = async (bot, message, args) => {
 
             })
             newData.save().catch(err => console.log(err));
-            return message.channel.send(`${bot.users.cache.get(user.id).username} has 0 ♏︎`)
+            return message.channel.send(`${bot.users.cache.get(user.id).username} has 0 ♏︎`);
 
         } else { //if user already has a data amount
 
 
-            return(`${bot.users.cache.get(user.id).username} has ${data.money} ♏︎`)
+            return(`${bot.users.cache.get(user.id).username} has ${data.money} ♏︎`);
 
         }
 
