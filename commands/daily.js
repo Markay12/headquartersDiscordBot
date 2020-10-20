@@ -3,6 +3,19 @@ const fs = require("fs");
 const money = require("../money.json");
 const ms = require("parse-ms");
 const cooldowns = require("../cooldowns.json");
+const mongoose = require("mongoose");
+
+//CONNECT TO MONGOOSEDB
+mongoose.connect(botconfig.passmongodb, {
+
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+
+});
+
+//MODELS
+const Data = require("../models/data.js")
+
 
 module.exports.run = async (bot, message, args) => {
 
@@ -11,6 +24,12 @@ module.exports.run = async (bot, message, args) => {
 
     let embed = new Discord.MessageEmbed();
     embed.setTitle("Daily Rewards!");
+
+    Data.findOne({
+
+        userID: message.author.id
+
+    })
 
     if(!money[message.author.id])
     {
