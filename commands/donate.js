@@ -11,6 +11,8 @@ module.exports.run = async (bot, message, args) => {
 
     if(!money[message.author.id]) return message.reply("Sorry, you don't have any money :cry:");
 
+    if(user.id == message.author.id) return message.reply("You can't pay yourself... you sly dog");
+
     if(parseInt(args[1]) > money[message.author.id].money) return message.reply("Sorry, you don't have enough money to donate.\n\nMaybe trying coding in :python: seems to make a lot of ♏︎'s right now");
     if(parseInt(args[1]) < 1) return message.reply("You can't send less than 1 ♏︎... how poor are you?");
 
