@@ -1,4 +1,3 @@
-const Discord = require("discord.js");
 const money = require("../money.json");
 const fs = require("fs");
 const maxBet = 100000;
