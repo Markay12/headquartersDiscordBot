@@ -51,7 +51,7 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
 
-    name: "1216681349",
+    name: "adminpay",
     aliases: []
 
 }
