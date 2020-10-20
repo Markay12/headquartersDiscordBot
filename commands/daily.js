@@ -29,6 +29,31 @@ module.exports.run = async (bot, message, args) => {
 
         userID: message.author.id
 
+    }, (err, data) => {
+
+        if(err) console.log(err);
+        if(!data) {
+
+            const newData = new Data({
+
+                name: message.author.username,
+                userID: message.author.id,
+                leaderboard: "all",
+                money: 0,
+                daily: 0,
+
+
+            })
+            newData.save().catch(err => console.log(err));
+            return message.channel.send(`${message.author.username} has 0 ♏︎`);
+
+        } else { //if user already has a data amount
+
+
+            return message.channel.send(`${message.author.username} has ${data.money} ♏︎`);
+
+        }
+
     })
 
     if(!money[message.author.id])
