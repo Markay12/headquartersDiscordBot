@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
 
     if(!args[1]) message.reply("Please specify which role you would like to purchase")
 
-    var pillageRole = message.guild.roles.find(role => role.name === "Pillagers");
+    var pillageRole = message.guild.roles.find(role => role.name === "Pillager");
 
     let user = message.author; //user can only apply role to themselves
 
