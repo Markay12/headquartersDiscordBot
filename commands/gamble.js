@@ -15,6 +15,8 @@ const Data = require("../models/data.js")
 
 module.exports.run = async (bot, message, args) => {
 
+    if (message.channel.id != 768301568373161995) return message.reply("Sorry, you can't gamble in here. Try #gamble");
+
     Data.findOne({
 
         userID: message.author.id
