@@ -17,9 +17,10 @@ const Data = require("../models/data.js")
 
 module.exports.run = async (bot, message, args) => {
 
-    if(!args[1]) message.reply("Please specify which role you would like to purchase")
+    if(!args[0]) return message.reply("Please specify which role you would like to purchase")
 
-    var pillageRole = message.guild.roles.cache.find(role => role.name === "Pillager");
+    let pillageRole = '768585859192586251';
+    var pillagerPrice = 250; //set price
 
     let user = message.author; //user can only apply role to themselves
 
@@ -49,26 +50,30 @@ module.exports.run = async (bot, message, args) => {
         else 
         {
 
-            //what if the user already has money? 
-            var pillagerPrice = 150;
-
-            //lets buy pillager rank for 150
-            if (data.money >= pillagerPrice)
+            if (args[0].toLowerCase() == "pillager") 
             {
+                //what if the user can try and purchase this role
+                
 
-                message.author.roles.add(pillageRole);
-                data.money -= pillagerPrice;
-                data.save().catch(err => console.log(err));
-                return message.reply(`Welcome to the land of the pillagers. Long way to move up but a great start indeed`)
+                //lets buy pillager rank for 150
+                if (data.money >= pillagerPrice)
+                {
 
-            } else {
+                    //if they already have the role
+                    if(message.member.roles.cache.has(pillageRole)) return message.reply("You already have this role");
 
-                return message.reply(`Sorry, you do not have enough to purchase this role... This role costs 150 ♏︎`)
+                    message.member.roles.add(pillageRole).catch(console.error);
+                    data.money -= pillagerPrice;
+                    data.save().catch(err => console.log(err));
+                    return message.reply(`*You have just purchased the Pillager Role for 150 ♏︎*\n Welcome to the land of the pillagers. Long way to move up but a great start indeed!`);
+
+                } else {
+
+                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs 150 ♏︎`);
+
+                }
 
             }
-
-
-
         }
 
     })
