@@ -18,6 +18,7 @@ module.exports.run = async (bot, message, args) => {
     let user = message.mentions.members.first() || bot.users.cache.get(args[0]); //get user by mention
     if(!user) return message.reply("Sorry, couldn't find that member. Make sure they haven't been laid off... \n*we've had some recent budget cuts*");
 
+    if(args[1] != Math.floor(args[1])) return message.reply("Please only enter whole numbers");
 
     Data.findOne({
 

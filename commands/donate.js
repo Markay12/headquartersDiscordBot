@@ -20,6 +20,8 @@ module.exports.run = async (bot, message, args) => {
 
     if(user.id == message.author.id) return message.reply("You can't pay yourself... you sly dog");
 
+    if(args[1] != Math.floor(args[1])) return message.reply("Please only enter whole numbers");
+
     Data.findOne({
 
         userID: message.author.id
