@@ -54,7 +54,7 @@ module.exports.run = async (bot, message, args) => {
 
         }
 
-        return message.channel.send(`${message.author.username} balance is now ${userData.money} : ${args[1]} ♏︎ `);
+        return message.channel.send(`${userData.name} balance is now ${userData.money} : ${args[1]} ♏︎ `);
 
     })
   
