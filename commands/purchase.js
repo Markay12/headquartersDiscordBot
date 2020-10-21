@@ -4,7 +4,7 @@ const money = require("../money.json")
 const mongoose = require("mongoose")
 const botconfig = require("../botconfig.json")
 
-/CONNECT TO MONGOOSEDB
+//CONNECT TO MONGOOSEDB
 mongoose.connect(botconfig.passmongodb, {
 
     useNewUrlParser: true,
