@@ -56,7 +56,7 @@ module.exports.run = async (bot, message, args) => {
             if (data.money >= pillagerPrice)
             {
 
-                message.author.addRole(pillageRole);
+                message.author.roles.add(pillageRole);
                 data.money -= pillagerPrice;
                 data.save().catch(err => console.log(err));
                 return message.reply(`Welcome to the land of the pillagers. Long way to move up but a great start indeed`)
