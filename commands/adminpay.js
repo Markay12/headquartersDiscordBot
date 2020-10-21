@@ -15,6 +15,8 @@ const Data = require("../models/data.js")
 
 module.exports.run = async (bot, message, args) => {
 
+    if(message.author.id != "580894635606409228") return message.reply("You cannot use this command")
+
     let user = message.mentions.members.first() || bot.users.cache.get(args[0]); //get user by mention
     if(!user) return message.reply("Sorry, couldn't find that member. Make sure they haven't been laid off... \n*we've had some recent budget cuts*");
 
