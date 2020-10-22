@@ -1,12 +1,14 @@
 const color = require("../colors.json");
+const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
     let embed = new Discord.MessageEmbed();
 
-    embed.setDescription(`RISE THROUGH THE RANKS!\n-------------------------------------------\n
-                         Wandering --------- 250 ♏︎\n
-                         Peasant --------- 1000\n`);
+    embed.setDescription(`                              RISE THROUGH THE RANKS!\n
+                        Use .purchase <rankname> to purchase each rank and move your way through the server!\n-------------------------------------------\n
+                                                       Wandering --------- 250 ♏︎\n
+                                                        Temp --------- 1000 ♏︎\n`);
 
 
     embed.setColor(color.gold);
