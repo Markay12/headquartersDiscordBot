@@ -21,8 +21,9 @@ module.exports.run = async (bot, message, args) => {
 
     if(!args[0]) return message.reply("Please specify which role you would like to purchase")
 
+    let applicantRole = '768858705197531156';
     let wanderRole = '768618964774682645';
-    var wanderPrice = 100; //set price
+    let wanderPrice = 100; //set price
     let tempRole = '768619085151469608';
     let tempPrice = 500;
     let internRole = '768650304941719582';
@@ -69,6 +70,7 @@ module.exports.run = async (bot, message, args) => {
                     if(message.member.roles.cache.has(wanderRole)) return message.reply("You already have this role");
 
                     message.member.roles.add(wanderRole).catch(console.error);
+                    message.member.roles.remove(applicantRole).catch(console.error);
                     data.money -= wanderPrice;
                     data.save().catch(err => console.log(err));
 
