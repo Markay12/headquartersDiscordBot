@@ -22,11 +22,11 @@ module.exports.run = async (bot, message, args) => {
     if(!args[0]) return message.reply("Please specify which role you would like to purchase")
 
     let wanderRole = '768618964774682645';
-    var wanderPrice = 250; //set price
+    var wanderPrice = 100; //set price
     let tempRole = '768619085151469608';
-    let tempPrice = 1000;
+    let tempPrice = 500;
     let internRole = '768650304941719582';
-    let internPrice = 2000;
+    let internPrice = 1000;
 
     let user = message.author; //user can only apply role to themselves
 
@@ -92,7 +92,7 @@ module.exports.run = async (bot, message, args) => {
                 if(message.member.roles.cache.has(tempRole)) return message.reply("You already have this role");
                 if(!message.member.roles.cache.has(wanderRole)) return message.reply("You can't buy this role until you purchase Wandering");
 
-                if(data.money >= 1000)
+                if(data.money >= tempPrice)
                 {
 
                     message.member.roles.add(tempRole).catch(console.error);
@@ -120,7 +120,7 @@ module.exports.run = async (bot, message, args) => {
                 if(!message.member.roles.cache.has(tempRole)) return message.reply("You can't buy this role until you have access to the temp role");
                 if(message.member.roles.cache.has(internRole)) return message.reply("You already have this role");
 
-                if(data.money >= 2000)
+                if(data.money >= internPrice)
                 {
 
                     message.member.roles.add(internRole).catch(console.error);
