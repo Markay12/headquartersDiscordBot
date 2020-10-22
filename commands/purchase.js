@@ -25,6 +25,8 @@ module.exports.run = async (bot, message, args) => {
     var wanderPrice = 250; //set price
     let tempRole = '768619085151469608';
     let tempPrice = 1000;
+    let internRole = '768650304941719582';
+    let internPrice = 2000;
 
     let user = message.author; //user can only apply role to themselves
 
@@ -107,9 +109,38 @@ module.exports.run = async (bot, message, args) => {
 
                 } else {
 
-                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs 1000 ♏︎`)
+                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs 1000 ♏︎`);
 
                 }
+
+            } else if (args[0].toLowerCase() == "intern")
+            {
+
+                //if they are already a wanderer or if they don't have pillager yet
+                if(!message.member.roles.cache.has(tempRole)) return message.reply("You can't buy this role until you have access to the temp role");
+                if(message.member.roles.cache.has(internRole)) return message.reply("You already have this role");
+
+                if(data.money >= 2000)
+                {
+
+                    message.member.roles.add(internRole).catch(console.error);
+                    message.member.roles.remove(tempRole).catch(console.error);
+                    data.money -= internPrice;
+                    data.save().catch(err => console.log(err));
+
+                    let internEmbed = new Discord.MessageEmbed();
+                    internEmbed.setDescription(`We really appreciate all the work that you have put into this company\nTherefore we are happy to announce that we are officially promoting you to Intern position immediately. Congratulations!\n\nYou spent 2000 ♏︎ on this rank`);
+                    internEmbed.setColor(color.blue);
+
+                    return message.reply(internEmbed);
+
+                } else {
+
+                    //user doesn't have enough to purchase this role
+                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs ${internPrice} ♏︎`);
+
+                }
+
 
             }
 
