@@ -1,4 +1,4 @@
-# The Headquarters Discord Bot
+# The Headquarters
 Python bot for The HQ Discord server ran by Markay#5500, first bot in Python rather than Node JS
 
 ![Headquarters](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F2016%2F03%2FCity-Building-PNG-180x180.png&f=1&nofb=1)
