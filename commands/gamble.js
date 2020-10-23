@@ -15,7 +15,10 @@ const Data = require("../models/data.js")
 
 module.exports.run = async (bot, message, args) => {
 
+    let applicantRole = '768858705197531156';
+
     if (message.channel.id != 768301568373161995) return message.reply("Sorry, you can't gamble in here. Try #gamble");
+    if (message.member.roles.cache.has(applicantRole)) return message.reply("Sorry Applicant! You cannot gamble yet!\nTry .purchase Wandering");
 
     Data.findOne({
 
