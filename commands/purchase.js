@@ -1,6 +1,4 @@
 const { Client } = require("discord.js");
-const fs = require("fs");
-const money = require("../money.json")
 const mongoose = require("mongoose")
 const botconfig = require("../botconfig.json")
 const color = require("../colors.json")
