@@ -2,7 +2,9 @@ const Discord = require("discord.js");
 const bot = new Discord.Client({ disableEveryone: true });
 const botconfig = require("./botconfig.json");
 const fs = require("fs");
+const HangmanGame = require("./commands/hangman.js")
 
+const hangman = new HangmanGame(bot);
 
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
@@ -52,6 +54,14 @@ bot.on("message", async message =>{
     //CHECK CHANNEL TYPE
     if (message.channel.type === "dm") return;
     if (message.author.bot) return;
+
+    //start hangman game
+    if(message.content.toLowerCase() === '.hangman')
+    {
+
+        hangman.newGame(message);
+
+    }
 
     //SET PREFIX
     let prefix = botconfig.prefix; //defined in our config file "."
