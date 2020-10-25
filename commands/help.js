@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
                          .gamble <amount> or *.gamble all* ---> win or lose it all! See where you can take your money!\n\n
                          Rank System\n---------------------\n
                          .ranks ---> Displays which ranks the user can buy and upgrade\n
-                         .purchase ---> purchase roles within the server\n\n
+                         .rankup ---> purchase roles within the server\n\n
                          Feel free to send CEO Markay#5500 or COO FeatheredSnake#6504 any questions or things you would like implemented in the future!`);
 
 

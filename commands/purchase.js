@@ -17,7 +17,6 @@ const Data = require("../models/data.js")
 
 module.exports.run = async (bot, message, args) => {
 
-    if(!args[0]) return message.reply("Please specify which role you would like to purchase")
 
     let applicantRole = '768858705197531156';
     let wanderRole = '768618964774682645';
@@ -55,7 +54,7 @@ module.exports.run = async (bot, message, args) => {
         else 
         {
 
-            if (args[0].toLowerCase() == "wander" || args[0].toLowerCase() == "wandering") 
+            if (message.member.roles.cache.has(applicantRole)) 
             {
                 //what if the user can try and purchase this role
                 
@@ -64,8 +63,6 @@ module.exports.run = async (bot, message, args) => {
                 if (data.money >= wanderPrice)
                 {
 
-                    //if they already have the role
-                    if(message.member.roles.cache.has(wanderRole)) return message.reply("You already have this role");
 
                     message.member.roles.add(wanderRole).catch(console.error);
                     message.member.roles.remove(applicantRole).catch(console.error);
@@ -85,11 +82,9 @@ module.exports.run = async (bot, message, args) => {
 
                 }
 
-            } else if (args[0].toLowerCase() == "temp")
+            } else if (message.member.roles.cache.has(wanderRole))
             {
 
-                //if they are already a wanderer or if they don't have pillager yet
-                if(message.member.roles.cache.has(tempRole)) return message.reply("You already have this role");
                 if(!message.member.roles.cache.has(wanderRole)) return message.reply("You can't buy this role until you purchase Wandering");
 
                 if(data.money >= tempPrice)
@@ -113,11 +108,9 @@ module.exports.run = async (bot, message, args) => {
 
                 }
 
-            } else if (args[0].toLowerCase() == "intern")
+            } else if (message.member.roles.cache.has(tempRole))
             {
 
-                //if they are already a wanderer or if they don't have pillager yet
-                if(!message.member.roles.cache.has(tempRole)) return message.reply("You can't buy this role until you have access to the temp role");
                 if(message.member.roles.cache.has(internRole)) return message.reply("You already have this role");
 
                 if(data.money >= internPrice)
@@ -129,7 +122,7 @@ module.exports.run = async (bot, message, args) => {
                     data.save().catch(err => console.log(err));
 
                     let internEmbed = new Discord.MessageEmbed();
-                    internEmbed.setDescription(`We really appreciate all the work that you have put into this company\nTherefore we are happy to announce that we are officially promoting you to Intern position immediately. Congratulations!\n\nYou spent 2000 ♏︎ on this rank`);
+                    internEmbed.setDescription(`We really appreciate all the work that you have put into this company\nTherefore we are happy to announce that we are officially promoting you to Intern position immediately. Congratulations!\n\nYou spent 1000 ♏︎ on this rank`);
                     internEmbed.setColor(color.blue);
 
                     return message.reply(internEmbed);
@@ -154,6 +147,6 @@ module.exports.run = async (bot, message, args) => {
 module.exports.help = {
 
     name: "buy",
-    aliases: ["purchase"]
+    aliases: ["rankup", "purchase"]
 
 }
