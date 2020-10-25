@@ -97,14 +97,14 @@ module.exports.run = async (bot, message, args) => {
 
                     let tempEmbed = new Discord.MessageEmbed();
 
-                    tempEmbed.setDescription(`*You have just purchased the Temp Role for 1000 ♏︎*\n Welcome! Make sure to change the printer ink. \nI like 2 packets of sugar in my coffee and a splash of cream. Not too cold and not too warm.. just about 195 degrees F\n`);
+                    tempEmbed.setDescription(`*You have just purchased the Temp Role for ${tempPrice} ♏︎*\n Welcome! Make sure to change the printer ink. \nI like 2 packets of sugar in my coffee and a splash of cream. Not too cold and not too warm.. just about 195 degrees F\n`);
 
                     tempEmbed.setColor(color.cream);
                     return message.reply(tempEmbed);
 
                 } else {
 
-                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs 1000 ♏︎`);
+                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs ${tempPrice} ♏︎`);
 
                 }
 
