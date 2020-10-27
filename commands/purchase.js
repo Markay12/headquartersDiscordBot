@@ -71,14 +71,14 @@ module.exports.run = async (bot, message, args) => {
 
                     let wanderEmbed = new Discord.MessageEmbed();
 
-                    wanderEmbed.setDescription(`*You have just purchased the Wandering Role for 150 ♏︎*\n Welcome to the server! You've now found a place and ready to move on up!\n Speak with members, get yourself known`)
+                    wanderEmbed.setDescription(`*You have just purchased the Wandering Role for 100 ♏︎*\n Welcome to the server! You've now found a place and ready to move on up!\n Speak with members, get yourself known`)
                     wanderEmbed.setColor(color.brown);
 
                     return message.reply(wanderEmbed);
 
                 } else {
 
-                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs 150 ♏︎`);
+                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs 100 ♏︎`);
 
                 }
 
