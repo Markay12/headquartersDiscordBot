@@ -96,6 +96,16 @@ module.exports.run = async (bot, message, args) => {
                     return message.reply(`You have recieved ${wanderDaily} ♏︎ for being the role of Wanderer. \nYour total balance is now ${data.money} ♏︎`) 
 
                 }
+                else if (message.member.roles.cache.has(tempRole))
+                {
+                    data.money += tempDaily;
+                    
+                    data.daily = Date.now();
+                    data.save().catch(err => console.log(err));
+                    
+                    return message.reply(`You have recieved ${tempDaily} ♏︎ for being the role of Temp. \nYour total balance is now ${data.money} ♏︎`) 
+                }
+                    
                 else if (message.member.roles.cache.has(internRole))
                 {
 
