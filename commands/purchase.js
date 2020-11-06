@@ -25,6 +25,12 @@ module.exports.run = async (bot, message, args) => {
     let tempPrice = 500;
     let internRole = '768650304941719582';
     let internPrice = 1000;
+    let deskAgentRole = '774106270130241566';
+    let deskAgentPrice = 5000;
+    let juniorRole = '763565026006269982';
+    let juniorPrice = 10000;
+    let seniorRole = '763564784104112130';
+    let seniorPrice = 20000; 
 
     let user = message.author; //user can only apply role to themselves
 
@@ -134,6 +140,89 @@ module.exports.run = async (bot, message, args) => {
 
                 }
 
+
+            } else if(message.member.roles.cache.has(internRole))
+            {
+
+                if(message.member.roles.cache.has(deskAgentRole)) return message.reply("You already have this role");
+
+                if(data.money >= deskAgentPrice)
+                {
+
+                    message.member.roles.add(deskAgentRole).catch(console.error);
+                    message.member.roles.remove(internRole).catch(console.error);
+                    data.money -= deskAgentPrice;
+                    data.save().catch(err => console.log(err));
+
+                    let deskAgentEmbed = new Discord.MessageEmbed();
+                    deskAgentEmbed.setDescription("Congratulations! You have now been offered a real job here! We are happy that you have stayed with us and decidede to join this team!\nYour new daily paycheck will be 1500 ♏︎!\n\nWelcome to the team!");
+                    
+                    deskAgentEmbed.setColor(color.orange);
+
+                    return message.reply(deskAgentEmbed);
+
+
+                } else {
+
+                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs ${deskAgentPrice} ♏︎`);
+
+                }
+
+            } else if (message.member.roles.cache.has(deskAgentRole))
+            {
+
+                if(message.member.roles.cache.has(juniorRole)) return message.reply("You already have this role");
+
+                if(data.money >= juniorPrice)
+                {
+
+                    message.member.roles.add(juniorRole).catch(console.error);
+                    message.member.roles.remove(deskAgentRole).catch(console.error);
+                    data.money -= juniorPrice;
+                    data.save().catch(err => console.log(err));
+
+                    let juniorRoleEmbed = new Discord.MessageEmbed();
+                    juniorRoleEmbed.setDescription("We can't believe it has been this long and you've stuck with us.\n\nI congratulate you on all of your success!\n Thank you!! Your new paycheck is 2000 ♏︎");
+
+                    
+                    juniorRoleEmbed.setColor(color.purple);
+
+                    return message.reply(juniorRoleEmbed);
+
+
+                } else {
+
+                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs ${juniorRoleEmbed} ♏︎`);
+
+                }
+
+            } else if(message.member.roles.cache.has(seniorRole))
+            {
+
+                if(message.member.roles.cache.has(seniorRole)) return message.reply("You already have this role");
+
+                if(data.money >= seniorPrice)
+                {
+
+                    message.member.roles.add(seniorRole).catch(console.error);
+                    message.member.roles.remove(juniorRole).catch(console.error);
+                    data.money -= seniorPrice;
+                    data.save().catch(err => console.log(err));
+
+                    let seniorRoleEmbed = new Discord.MessageEmbed();
+                    seniorRoleEmbed.setDescription("Good job. You've made it. Now instead of learning how to code and being a programmer you're solving everyone's issues\nYou are becoming a great worker and have definitely graduated from StackOverflow\n\nNew paycheck = 3000 ♏︎");
+
+                    
+                    seniorRoleEmbed.setColor(color.red);
+
+                    return message.reply(seniorRoleEmbed);
+
+
+                } else {
+
+                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs ${seniorPrice} ♏︎`);
+
+                }
 
             }
 
