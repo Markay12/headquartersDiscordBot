@@ -14,14 +14,20 @@ mongoose.connect(botconfig.passmongodb, {
 const Data = require("../models/data.js")
 
 //role data
-let applicantRole = '768858705197531156';
 let applicantDaily = 100;
-let wanderRole = '768618964774682645';
 let wanderDaily = 300;
-let tempRole = '768619085151469608';
 let tempDaily = 500;
-let internRole = '768650304941719582';
 let internDaily = 1000;
+let deskDaily = 1500;
+let juniorDaily = 2000;
+let seniorDaily = 3000;
+let applicantRole = '768858705197531156';
+let wanderRole = '768618964774682645';
+let tempRole = '768619085151469608';
+let internRole = '768650304941719582';
+let deskAgentRole = '774106270130241566';
+let juniorRole = '763565026006269982';
+let seniorRole = '763564784104112130';
 
 
 module.exports.run = async (bot, message, args) => {
@@ -98,6 +104,39 @@ module.exports.run = async (bot, message, args) => {
                     data.save().catch(err => console.log(err)); //save data
 
                     return message.reply(`You have recieved ${internDaily} ♏︎ for being the role of Intern. \nYour total balance is now ${data.money} ♏︎`) 
+
+                }
+                else if (message.member.roles.cache.has(deskAgentRole))
+                {
+
+                    data.money += deskDaily;
+                    data.daily = Date.now();
+                    data.save().catch(err => console.log(err));
+
+                    return message.reply(`You have recieved ${deskDaily} ♏︎ for being the role of Desk Agent! \nYour total balance is now ${data.money} ♏︎`)
+
+                }
+                else if (message.member.roles.cache.has(juniorRole))
+                {
+
+                    data.money += juniorDaily;
+                    data.daily = Date.now();
+
+                    data.save().catch(err => console.log(err));
+
+                    return message.reply(`You have recieved ${juniorDaily} ♏︎ for being the role of Junior Developer! \nYour total balance is now ${data.money} ♏︎`)
+
+
+                }
+                else if (message.member.roles.cache.has(seniorRole))
+                {
+
+                    data.money += seniorDaily;
+                    data.daily = Date.now();
+
+                    data.save().catch(err => console.log(err));
+
+                    return message.reply(`You have recieved ${seniorDaily} ♏︎ for being the role of SENIOR Developer! \nYour total balance is now ${data.money} ♏︎`)
 
                 }
 
