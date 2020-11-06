@@ -18,19 +18,19 @@ const Data = require("../models/data.js")
 module.exports.run = async (bot, message, args) => {
 
 
+    let wanderPrice = 100; //set price
+    let tempPrice = 500;
+    let internPrice = 1000;
+    let deskAgentPrice = 5000;
+    let juniorPrice = 10000;
+    let seniorPrice = 20000; 
     let applicantRole = '768858705197531156';
     let wanderRole = '768618964774682645';
-    let wanderPrice = 100; //set price
     let tempRole = '768619085151469608';
-    let tempPrice = 500;
     let internRole = '768650304941719582';
-    let internPrice = 1000;
     let deskAgentRole = '774106270130241566';
-    let deskAgentPrice = 5000;
     let juniorRole = '763565026006269982';
-    let juniorPrice = 10000;
     let seniorRole = '763564784104112130';
-    let seniorPrice = 20000; 
 
     let user = message.author; //user can only apply role to themselves
 
@@ -192,7 +192,7 @@ module.exports.run = async (bot, message, args) => {
 
                 } else {
 
-                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs ${juniorRoleEmbed} ♏︎`);
+                    return message.reply(`Sorry, you do not have enough to purchase this role... This role costs ${juniorPrice} ♏︎`);
 
                 }
 
