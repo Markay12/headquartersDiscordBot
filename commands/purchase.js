@@ -167,13 +167,13 @@ module.exports.run = async (bot, message, args) => {
                     data.money -= role.juniorDev.price;
                     data.save().catch(err => console.log(err));
 
-                    let role.juniorDev.roleEmbed = new Discord.MessageEmbed();
-                    role.juniorDev.roleEmbed.setDescription("We can't believe it has been this long and you've stuck with us.\n\nI congratulate you on all of your success!\n Thank you!! Your new paycheck is 2000 ♏︎");
+                    let juniorEmbed = new Discord.MessageEmbed();
+                    juniorEmbed.setDescription("We can't believe it has been this long and you've stuck with us.\n\nI congratulate you on all of your success!\n Thank you!! Your new paycheck is 2000 ♏︎");
 
                     
-                    role.juniorDev.roleEmbed.setColor(color.purple);
+                    juniorEmbed.setColor(color.purple);
 
-                    return message.reply(role.juniorDev.roleEmbed);
+                    return message.reply(juniorEmbed);
 
 
                 } else {
@@ -195,13 +195,13 @@ module.exports.run = async (bot, message, args) => {
                     data.money -= role.seniorDev.price;
                     data.save().catch(err => console.log(err));
 
-                    let role.seniorDev.roleEmbed = new Discord.MessageEmbed();
-                    role.seniorDev.roleEmbed.setDescription("Good job. You've made it. Now instead of learning how to code and being a programmer you're solving everyone's issues\nYou are becoming a great worker and have definitely graduated from StackOverflow\n\nNew paycheck = 3000 ♏︎");
+                    let seniorEmbed = new Discord.MessageEmbed();
+                    seniorEmbed.setDescription("Good job. You've made it. Now instead of learning how to code and being a programmer you're solving everyone's issues\nYou are becoming a great worker and have definitely graduated from StackOverflow\n\nNew paycheck = 3000 ♏︎");
 
                     
-                    role.seniorDev.roleEmbed.setColor(color.red);
+                    seniorEmbed.setColor(color.red);
 
-                    return message.reply(role.seniorDev.roleEmbed);
+                    return message.reply(seniorEmbed);
 
 
                 } else {
