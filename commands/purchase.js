@@ -182,7 +182,7 @@ module.exports.run = async (bot, message, args) => {
 
                 }
 
-            } else if(message.member.roles.cache.has(role.seniorDev.role))
+            } else if(message.member.roles.cache.has(role.juniorDev.role))
             {
 
                 if(message.member.roles.cache.has(role.seniorDev.role)) return message.reply("You already have this role");
