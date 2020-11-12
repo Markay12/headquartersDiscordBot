@@ -9,9 +9,15 @@
   "author": "Mark Ashinhust",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.3.1",
+    "discord": "^0.8.2",
+    "discord.js": "^12.4.1",
+    "embed": "0.0.1",
     "fs": "0.0.1-security",
-    "mongoose": "^5.10.9",
-    "parse-ms": "^2.1.0"
+    "mime": "^2.4.6",
+    "mongoose": "^5.10.13",
+    "node.js": "0.0.1-security",
+    "parse-ms": "^2.1.0",
+    "qs": "^6.9.4",
+    "superagent": "^6.1.0"
   }
 }
