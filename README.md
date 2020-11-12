@@ -8,6 +8,7 @@ Python bot for The HQ Discord server ran by Markay#5500, first bot in Python rat
 * [Commands]()
 * [Economy]()
 * [Database]()
+* [Updates]()
 
 
 # About Me
@@ -30,6 +31,7 @@ Firstly, this is my prefix `.` which is just one period. You use this before eve
 9. `.ping` --> initial command, shows latency
 10. `.purchase` --> purchase roles within the server 
 11. `.ranks` --> Displays which ranks the user can buy and upgrade 
+12. `.hangman` --> Play a fun game of hangman and see if you can win!
 
 # Economy
 This server continues to expand on and include our fully functioning economy where users can increase, donate, gamble and purchase items. The economy is used for these items right now and is included in the command list above. 
@@ -40,3 +42,31 @@ The economy for this server has been uploaded online so that the daily reset and
 Using Mongoose Databse I was able to create a schema which tracks each userID, money, daily reset and plcae within the leaderboard.
 
 This database can be accessed through an account if any issues should occur. 
+
+
+# Updates
+
+
+## 12 November 2020 
+
+> Version 1.0.1
+
+This is the first logged update for the bot. Making sure that everything works well here and adding some new functionality. Notes will be posted below.
+
+### New json file for server ranks and information
+filename: roles.json
+
+File holds information for each role within the server to apply when ranking up and when using certain role abilities
+
+Added pricing for the roles and the link to the dev role within Discord code
+
+### Purchase.js
+
+Updated with code from roles.json file to add less variables and parse from JSON file
+
+### ranks.js
+
+Updated with information being gathered from roles.json file
+
+### **Node modules have been updated**
+
