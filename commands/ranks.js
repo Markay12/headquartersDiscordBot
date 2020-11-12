@@ -8,13 +8,13 @@ module.exports.run = async (bot, message, args) => {
 
     embed.setDescription(`RISE THROUGH THE RANKS!\n
                         Use .purchase <rankname> to purchase each rank and move your way through the server!\n-------------------------------------------\n
-                        Applicant ------------- FREE\n
-                        Wandering ------------- ${role.wander.price} ♏︎\n
-                        Temp ------------------ ${role.temp.price} ♏︎\n
-                        Intern --------------- ${role.intern.price} ♏︎\n
-                        Desk Agent ----------- ${role.deskAgent.price} ♏︎\n
-                        Junior Developer ---- ${role.juniorDev.price} ♏︎\n
-                        Senior Developer ---- ${role.seniorDev.price} ♏︎\n`);
+                        Applicant ------------- FREE ♏︎\n
+                        Wandering -------------  ${role.wander.price} ♏︎\n
+                        Temp ------------------- ${role.temp.price} ♏︎\n
+                        Intern ---------------- ${role.intern.price} ♏︎\n
+                        Desk Agent ------------ ${role.deskAgent.price} ♏︎\n
+                        Junior Developer ----- ${role.deskAgent.price} ♏︎\n
+                        Senior Developer ----- ${role.seniorDev.price} ♏︎\n`);
 
 
     embed.setColor(color.gold);
