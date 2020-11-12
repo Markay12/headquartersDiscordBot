@@ -95,7 +95,7 @@ bot.on("message", async message =>{
 
 })
 
-bot.login('NzYzNTcyMTM2ODQwNzkwMDQ3.X35p9w.POFBJRo33dhXoBKNxsEfTZdAN2Y') //use token defined in our config file
+bot.login(process.env.token) //use token defined in our config file
 
 //botconfig.token
 //process.env.token for server
