@@ -74,8 +74,8 @@ module.exports.run = async (bot, message, args) => {
 
                     userData.money += parseInt(args[1]);
                     authorData.money -= parseInt(args[1]);
-                    userData.save().cathc(err => console.log(err));
-                    authorData.save().cathc(err => console.log(err));
+                    userData.save().catch(err => console.log(err));
+                    authorData.save().catch(err => console.log(err));
 
                 }
 
