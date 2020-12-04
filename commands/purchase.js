@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const botconfig = require("../botconfig.json");
 const color = require("../colors.json");
 const Discord = require("discord.js");
-const role = require("../roles.json");
+const role = require("../hqRoles.json");
 
 //CONNECT TO MONGOOSEDB
 mongoose.connect(botconfig.passmongodb, {
