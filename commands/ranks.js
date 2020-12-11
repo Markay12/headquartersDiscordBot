@@ -1,6 +1,6 @@
 const color = require("../colors.json");
 const Discord = require("discord.js");
-const role = require("../roles.json");
+const role = require("../hqRoles.json");
 
 module.exports.run = async (bot, message, args) => {
 
